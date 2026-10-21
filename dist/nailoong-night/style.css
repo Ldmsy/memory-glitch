@@ -78,3 +78,31 @@ body.playing .masthead{display:none}body.playing .scene-vignette{opacity:.25}.hu
 }
 @media(max-width:760px) and (min-width:391px){.dpad{grid-template-columns:39px 39px 39px;grid-template-rows:39px 39px 39px}}
 @media(hover:none) and (pointer:coarse) and (max-height:500px){.dpad{grid-template-columns:36px 36px 36px;grid-template-rows:36px 36px 36px}.touch-actions>button{min-width:36px;min-height:36px}}
+
+/* A visible invitation to use a controller, without obscuring the world. */
+.controller-status{margin:6px 0 0;max-width:410px;color:#c0cba9;font-size:10px;line-height:1.55;letter-spacing:.05px}
+.controller-status::before{content:'◉';font-size:8px;color:#eba35f;margin-right:6px;vertical-align:1px}
+.controller-badge{position:absolute;right:0;top:calc(100% + 7px);max-width:220px;padding:5px 8px;border:1px solid #d2ad685c;border-radius:4px;background:#173c2fed;color:#f2dcab;font-size:8px;line-height:1.4;letter-spacing:.25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 3px 12px #071b1230;pointer-events:none}
+.game-hint>.keyboard-hint{display:block;margin:0;opacity:1}
+.keyboard-hint>span{margin:0 6px;opacity:.5}
+.game-hint>.controller-hint{display:block;white-space:normal;margin:7px 0 0;padding-top:7px;border-top:1px solid #b6c69828;max-width:440px;color:#dbcc9f;font-size:9px;line-height:1.45;opacity:1}
+.controller-hint:empty{display:none!important}
+.panel-actions>.controller-toggle{font-size:10px;line-height:1.5;letter-spacing:.7px;padding:11px 13px;min-height:39px;white-space:normal;background:#dce2cc4a;border-color:#8da07878;color:#425b37}
+.panel-actions>.controller-toggle[aria-pressed="true"]{background:#274c37;color:#f3e9cf;border-color:#52784b}
+.panel-actions>.controller-detail{font-size:10px;line-height:1.7;color:#697359;letter-spacing:.05px;margin:0 3px;max-width:340px;align-self:center}
+.result-card button:focus-visible{outline-color:#365d3c}
+.overlay-panel{align-items:safe center}
+@media(min-width:761px){.hud-actions{position:relative;top:auto;right:auto}.mission-stamps{margin-top:17px}.game-hint{bottom:22px}}
+@media(min-width:761px) and (max-height:650px){.controller-status{font-size:9px;line-height:1.45;margin-top:4px}.mission-stamps{margin-top:12px}}
+@media(max-width:760px){
+  .controller-status{position:absolute;bottom:65px;left:0;right:0;margin:0;max-width:330px;font-size:9px;line-height:1.5;min-height:27px}
+  .controller-status::before{font-size:7px;margin-right:5px}
+  .load-status{bottom:103px}
+  .launch-row{bottom:130px}
+  .mission{bottom:202px}
+  .controller-badge{font-size:7px;top:calc(100% + 6px);padding:5px 6px;max-width:150px}
+  .panel-actions>.controller-toggle{font-size:9px;letter-spacing:.4px;padding:10px 12px}
+  .panel-actions>.controller-detail{font-size:9px;line-height:1.65}
+}
+@media(max-width:760px) and (max-height:740px){.load-status{bottom:100px}.launch-row{bottom:125px}.mission{bottom:193px}.controller-status{bottom:64px;font-size:8px;min-height:25px}}
+@media(max-height:650px){.pause-card .panel-doodle{width:43px;height:43px;margin:13px auto 12px;font-size:23px}.pause-card .panel-actions{margin-top:17px;gap:7px}.pause-card .panel-footnote{margin-top:14px!important}}

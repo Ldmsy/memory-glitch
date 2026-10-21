@@ -33,6 +33,7 @@
           <span class="run-duration">A 2-MINUTE<br>MIDNIGHT MISADVENTURE</span>
         </div>
         <p id="load-status" class="load-status" role="status">Waking up our very hungry dragon…</p>
+        <p id="controller-status" class="controller-status" role="status" aria-live="polite">Xbox controller? Connect it, focus this tab, then press A.</p>
         <div class="mission-stamps" aria-label="Game objectives">
           <div><strong>12</strong><span>CANDIES<br>TO COLLECT</span></div>
           <div><strong>03</strong><span>DOORS<br>TO VISIT</span></div>
@@ -56,17 +57,17 @@
         <div class="hud-stat"><span class="hud-label">DOORS VISITED</span><strong id="house-count">0 / 3</strong></div>
         <div class="hud-stat hearts-stat"><span class="hud-label">STILL KICKING</span><strong id="hearts" aria-label="Lives remaining">♥ ♥ ♥</strong></div>
       </div>
-      <div class="hud-actions"><button id="camera-button" class="hud-button camera-button" type="button" aria-label="Camera overview" title="Switch to overview camera (C)">OVERVIEW</button><button id="sound-button" class="hud-button" type="button" aria-label="Toggle game sound" title="Toggle sound">Sound off</button><button id="pause-button" class="hud-button pause-button" type="button" aria-label="Pause game" title="Pause game">Ⅱ</button></div>
+      <div class="hud-actions"><button id="camera-button" class="hud-button camera-button" type="button" aria-label="Camera overview" title="Switch to overview camera (C)">OVERVIEW</button><button id="sound-button" class="hud-button" type="button" aria-label="Toggle game sound" title="Toggle sound">Sound off</button><button id="pause-button" class="hud-button pause-button" type="button" aria-label="Pause game" title="Pause game">Ⅱ</button><span id="controller-badge" class="controller-badge" aria-live="polite" hidden>Controller ready</span></div>
       <div class="laugh-status"><div class="laugh-top"><span class="laugh-icon" aria-hidden="true">☺</span><span id="laugh-label">Belly laugh ready</span><kbd>SPACE</kbd></div><div class="laugh-track"><div id="laugh-fill"></div></div></div>
       <nav class="station-navigation" aria-label="Navigate to a trick-or-treat stop"><button type="button" data-station="candy"><span>01</span> Candy</button><button type="button" data-station="potion"><span>02</span> Potion</button><button type="button" data-station="costume"><span>03</span> Costume</button><button id="go-exit" type="button" disabled>Go home <span aria-hidden="true">↗</span></button></nav>
-      <div class="game-hint"><kbd>CLICK</kbd> or <kbd>WASD</kbd> move <span>·</span> <kbd>SHIFT</kbd> dash <span>·</span> <kbd>E</kbd> trick or treat</div>
+      <div class="game-hint"><span class="keyboard-hint"><kbd>CLICK</kbd> or <kbd>WASD</kbd> move <span>·</span> <kbd>SHIFT</kbd> dash <span>·</span> <kbd>E</kbd> trick or treat</span><span id="controller-hint" class="controller-hint">Xbox: focus this tab, then press A to play.</span></div>
     </section>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <div id="prompt" class="interaction-prompt" hidden><span class="prompt-mark" aria-hidden="true">✳</span><p id="prompt-text">A suspiciously generous neighbor.</p><button id="interact" type="button"><kbd>E</kbd><span>Trick or treat</span></button></div>
 
     <section id="pause-panel" class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
-      <div class="result-card pause-card"><p class="panel-eyebrow">THE GHOSTS CAN WAIT.</p><div class="panel-doodle" aria-hidden="true">Ⅱ</div><h2 id="pause-title">Snack break.</h2><p>Your candy isn't going anywhere.<br>Probably.</p><div class="panel-actions"><button id="resume" class="button button-primary" type="button">Back to the haunt <span aria-hidden="true">↗</span></button><button id="restart" class="button button-secondary" type="button">Start a fresh run</button></div><p class="panel-footnote">CLICK TO MOVE · DASH · LAUGH · KNOCK</p></div>
+      <div class="result-card pause-card"><p class="panel-eyebrow">THE GHOSTS CAN WAIT.</p><div class="panel-doodle" aria-hidden="true">Ⅱ</div><h2 id="pause-title">Snack break.</h2><p>Your candy isn't going anywhere.<br>Probably.</p><div class="panel-actions"><button id="resume" class="button button-primary" type="button">Back to the haunt <span aria-hidden="true">↗</span></button><button id="restart" class="button button-secondary" type="button">Start a fresh run</button><button id="controller-toggle" class="button button-secondary controller-toggle" type="button" aria-pressed="false" aria-describedby="controller-detail">CONTROLLER AUTO · PRESS A</button><p id="controller-detail" class="controller-detail">Left stick / D-pad move · A knock / resume · X laugh · B / RT dash · Y camera · Menu pause</p></div><p class="panel-footnote">CLICK TO MOVE · DASH · LAUGH · KNOCK</p></div>
     </section>
 
     <section id="end-panel" class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="end-title" hidden>

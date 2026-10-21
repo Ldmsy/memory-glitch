@@ -2,6 +2,7 @@ import * as THREE from '../vendor/three.module.js';
 import { createFestival, createGhost } from './world.js';
 import { createNailoong } from './character.js';
 import { GOAL, newRun, advance, collect, visit, laugh, hit, escape, canEscape, moveWithinArena } from './rules.js';
+import { ControllerInput, controllerCommands } from './controller.js';
 
 const $ = id => document.getElementById(id);
 const canvas = $('game-canvas');
@@ -9,7 +10,9 @@ const show = (id, visible) => { if ($(id)) $(id).hidden = !visible; };
 let renderer, scene, camera, festival, hero;
 let mode = 'loading', run = newRun(), time = 0, last = performance.now();
 let destination = null, destinationStation = null, route = [], nearest = null;
-let laughing = 0, toastUntil = 0, sound = true, audio, oldButtons = [], controllerEnabled = false;
+let laughing = 0, toastUntil = 0, sound = true, audio;
+const controller = new ControllerInput();
+let lastControllerStatus = '';
 let endShown = false, escapeAnnounced = false, lastFootstep = 0;
 let overview = false;
 const cameraCenter = new THREE.Vector3(0,0,3);
@@ -230,15 +233,49 @@ function resize() {
   camera.updateProjectionMatrix();
 }
 
+function toggleCamera() {
+  overview=!overview;
+  $('camera-button').textContent=overview?'FOLLOW CAM':'OVERVIEW';
+  $('camera-button').setAttribute('aria-label',overview?'Camera follow':'Camera overview');
+  resize();
+}
+
+function controllerSnapshot() {
+  try { return navigator.getGamepads?.() || []; } catch { return []; }
+}
+
 function readPad() {
-  if(!controllerEnabled){oldButtons=[];return{x:0,z:0,dash:false};}
-  const pad=Array.from(navigator.getGamepads?.()||[]).find(Boolean);
-  if(!pad){oldButtons=[];return {x:0,z:0,dash:false};}
-  const held=i=>!!pad.buttons[i]?.pressed, pressed=i=>held(i)&&!oldButtons[i];
-  if(pressed(0)) {if(mode==='intro'||mode==='end')start();else if(mode==='playing')interact();}
-  if(pressed(2))doLaugh();if(pressed(9))pause();
-  const x=Math.abs(pad.axes[0])>.18?pad.axes[0]:0,z=Math.abs(pad.axes[1])>.18?pad.axes[1]:0;
-  oldButtons=pad.buttons.map(b=>b.pressed);return{x,z,dash:held(7)||held(1)};
+  const focused = !document.hidden && document.hasFocus();
+  const input = controller.poll(controllerSnapshot(), {focused});
+  if(input.disconnected && mode==='playing') {
+    pause(); toast('CONTROLLER DISCONNECTED · Reconnect, then press A to resume.',5);
+  }
+  const status = !input.enabled ? 'Controller disabled. Enable it in the pause menu.'
+    : input.mapping==='unsupported' ? 'Controller detected, but its button layout is unsupported. Use keyboard or touch.'
+    : input.active ? (focused ? 'Controller ready · A knock / resume · X belly laugh · B / RT dash' : 'Game paused while this tab is in the background. Return, then press A.')
+    : input.connected ? 'Controller connected · Press A to play or resume.'
+    : !navigator.getGamepads ? 'This browser does not expose controller input. Keyboard and touch are available.'
+    : 'Xbox controller? Connect it, click this page, then press A.';
+  const statusKey = `${status}|${input.id}`;
+  if(statusKey!==lastControllerStatus) {
+    lastControllerStatus=statusKey;
+    $('controller-status').textContent=status;
+    $('controller-hint').textContent=input.active ? 'XBOX · Left stick / D-pad move · A knock · X laugh · B / RT dash · Y camera · Menu pause' : status;
+    const badge=$('controller-badge');
+    badge.hidden=!input.connected;
+    badge.textContent=!input.enabled?'CONTROLLER OFF':input.mapping==='unsupported'?'UNSUPPORTED PAD':input.active?'CONTROLLER READY':'CONTROLLER · PRESS A';
+    badge.title=input.id;
+    $('controller-toggle').textContent=input.enabled?'CONTROLLER AUTO · ON':'CONTROLLER OFF · ENABLE';
+    $('controller-toggle').setAttribute('aria-pressed',String(input.enabled));
+  }
+  for(const command of controllerCommands(input, mode)) {
+    if(command==='start')start();
+    else if(command==='pause')pause();
+    else if(command==='interact')interact();
+    else if(command==='laugh')doLaugh();
+    else if(command==='camera')toggleCamera();
+  }
+  return input;
 }
 
 function tick(dt) {
@@ -332,12 +369,8 @@ function bind() {
   $('play').addEventListener('click',start);$('play-again').addEventListener('click',start);
   $('pause-button').addEventListener('click',pause);$('resume').addEventListener('click',pause);$('restart').addEventListener('click',start);
   $('interact').addEventListener('click',()=>interact());
-  const toggleCamera=()=>{overview=!overview;$('camera-button').textContent=overview?'FOLLOW CAM':'OVERVIEW';$('camera-button').setAttribute('aria-label',overview?'Camera follow':'Camera overview');resize();};
   $('camera-button')?.addEventListener('click',toggleCamera);
-  const controllerButton=document.createElement('button');
-  controllerButton.className='button button-secondary';controllerButton.type='button';controllerButton.textContent='GAMEPAD: OFF';controllerButton.setAttribute('aria-pressed','false');
-  controllerButton.addEventListener('click',()=>{controllerEnabled=!controllerEnabled;oldButtons=[];controllerButton.textContent=controllerEnabled?'GAMEPAD: ON · A KNOCK / X LAUGH / B DASH':'GAMEPAD: OFF';controllerButton.setAttribute('aria-pressed',String(controllerEnabled));});
-  $('pause-panel').querySelector('.panel-actions').append(controllerButton);
+  $('controller-toggle').addEventListener('click',()=>controller.setEnabled(!controller.enabled));
   $('sound-button').addEventListener('click',()=>{sound=!sound;$('sound-button').textContent=sound?'SOUND ON':'SOUND OFF';$('sound-button').setAttribute('aria-pressed',String(sound));});
   window.addEventListener('keydown',e=>{
     const key=e.key.toLowerCase();
@@ -347,8 +380,10 @@ function bind() {
     keys.add(key);
   });
   window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
-  window.addEventListener('blur',()=>{keys.clear();if(mode==='playing')pause();});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden&&mode==='playing')pause();});
+  const loseFocus=()=>{keys.clear();controller.poll(controllerSnapshot(),{focused:false});if(mode==='playing')pause();};
+  window.addEventListener('blur',loseFocus);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)loseFocus();});
+  window.addEventListener('gamepaddisconnected',()=>{if(controller.selected&&mode==='playing'){readPad();}});
   window.addEventListener('resize',resize);
   for(const button of document.querySelectorAll('[data-move]')) {
     const key={up:'w',down:'s',left:'a',right:'d'}[button.dataset.move];
