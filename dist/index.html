@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b171b" />
+    <title>TRICK TOWN — 万圣节整活小镇</title>
+    <meta
+      name="description"
+      content="六位怪邻居，一场万圣节闹剧。第三人称 3D 讨糖游戏。"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="world" aria-label="Trick Town 3D 游戏场景"></canvas>
+    <div class="vignette"></div>
+    <div id="danger"></div>
+    <div class="grain"></div>
+    <header>
+      <a class="brand" href="./"
+        ><span class="sigil">♧</span> TRICK TOWN
+        <small>HALLOWEEN CLUB</small></a
+      >
+      <div class="header-right">
+        <span id="inputMode">键鼠模式</span
+        ><button id="sound" aria-label="切换声音">声音 · 开</button
+        ><button id="pauseButton" hidden>暂停 II</button>
+      </div>
+    </header>
+    <main id="intro">
+      <div class="eyebrow"><span></span> HALLOWEEN, BUT MAKE IT CHAOTIC</div>
+      <p class="pretitle">WELCOME TO THE NEIGHBOURHOOD</p>
+      <h1>TRICK<br /><em>TOWN</em><span class="title-dot">.</span></h1>
+      <div class="intro-copy">
+        <p class="tagline">今晚，谁也别正常。</p>
+        <p>
+          带上吉伊，去六位怪邻居家讨糖。<br />能不能顺利回家不一定，笑出声倒是很有可能。
+        </p>
+      </div>
+      <button id="start" class="primary">带吉伊去讨糖 <span>↗</span></button>
+      <div class="start-note">单人 3D · 键鼠 / Xbox · 一局约 8 分钟</div>
+      <div class="intro-footer">
+        <span>VOL. 02 / THE ODD NEIGHBOURS</span
+        ><span>SIX CHARACTERS. ZERO NORMAL NEIGHBOURS.</span>
+      </div>
+    </main>
+    <aside id="sceneCaption">
+      <div class="edition">THE HALLOWEEN COLLECTION <b>06</b></div>
+      <div class="cast-label">
+        <span class="tiny" id="castEnglish">CHIIKAWA</span>
+        <h2 id="castName">吉伊</h2>
+        <p id="castRole">怕归怕，也要讨到糖。</p>
+        <span id="castOutfit">南瓜披风 / 小小勇气</span>
+      </div>
+      <div class="model-controls">
+        <button id="castPrev" aria-label="上一个角色">←</button
+        ><button id="castAnimate">逗一下 ↗</button
+        ><button id="castNext" aria-label="下一个角色">→</button>
+      </div>
+      <div id="castSelector" aria-label="角色模型图鉴"></div>
+    </aside>
+    <section id="hud" hidden>
+      <div class="objective">
+        <span class="tiny">CANDY BAG / 今晚的收获</span>
+        <div id="candySlots"></div>
+        <p id="objectiveText">寻找亮着橙灯的门</p>
+      </div>
+      <div class="timer">
+        <span class="tiny">MIDNIGHT IN</span><strong id="time">08:00</strong
+        ><span id="keeperStatus">夜色暂时平静</span>
+      </div>
+      <div class="location">
+        <span class="location-line"></span
+        ><span id="locationText">TRICK TOWN</span
+        ><span id="coordinates">THE SOUTH GATE</span>
+      </div>
+      <div class="meters">
+        <label>STAMINA <span>体力</span></label>
+        <div class="meter"><i id="stamina"></i></div>
+        <label>THE SCENT <span id="scent">微弱</span></label>
+        <div class="meter scent"><i id="scentBar"></i></div>
+      </div>
+      <div id="interact" hidden><kbd>E</kbd><span>敲门讨糖</span></div>
+      <button id="actorAction" hidden></button>
+      <div class="chaos">
+        <span class="tiny">CHAOS SCORE</span><strong id="chaosCount">0</strong
+        ><span id="companionStatus">吉伊跟着你</span>
+      </div>
+      <div class="crosshair">·</div>
+      <div id="toast" role="status"></div>
+      <div class="controls">
+        <span><kbd>W A S D</kbd> 移动</span
+        ><span><kbd>拖动鼠标 / ← →</kbd> 镜头</span
+        ><span><kbd>Shift</kbd> 冲刺</span><span><kbd>C</kbd> 蹲下</span
+        ><span><kbd>F</kbd> 角色互动</span><span><kbd>Q</kbd> 诱饵</span
+        ><span><kbd>M</kbd> 地图</span>
+      </div>
+      <canvas
+        id="map"
+        width="220"
+        height="220"
+        hidden
+        aria-label="小镇地图"
+      ></canvas>
+    </section>
+    <section id="doorPanel" class="modal" hidden>
+      <div class="modal-card">
+        <span class="tiny" id="doorName">THE CANDLE HOUSE</span>
+        <h2>Trick <em>or</em> treat?</h2>
+        <p>门后传来糖纸窸窣的声音。你要怎么做？</p>
+        <div class="choices">
+          <button id="treat">
+            <span class="choice-key">1 / A</span><strong>TREAT</strong
+            ><span>礼貌讨糖</span><small>获得 1 颗糖 · 轻微声响</small></button
+          ><button id="trick">
+            <span class="choice-key">2 / X</span><strong>TRICK</strong
+            ><span>大胆恶作剧</span
+            ><small>获得 2 颗糖 · Sahur 会来凑热闹</small>
+          </button>
+        </div>
+        <button id="leaveDoor" class="text-button">Esc / B · 悄悄离开</button>
+      </div>
+    </section>
+    <section id="pause" class="modal" hidden>
+      <div class="modal-card">
+        <span class="tiny">TAKE A BREATH</span>
+        <h2>夜还很长。</h2>
+        <p>
+          游戏已暂停。找怪邻居整活也能拿糖。被追时，利用房屋遮挡或向吉伊求助。
+        </p>
+        <div class="help-grid">
+          <div>
+            <b>键盘与鼠标</b>
+            <p>
+              WASD 移动 · 拖动鼠标调整视角<br />方向键调整视角 · Shift 冲刺<br />E
+              敲门 · F 角色互动 · C 蹲下 · Q 诱饵<br />M 地图 · Esc 暂停
+            </p>
+          </div>
+          <div>
+            <b>Xbox 手柄</b>
+            <p>
+              左摇杆移动 · 右摇杆视角<br />RT 冲刺 · B 蹲下 · A 敲门 · X
+              角色互动<br />Y 投掷诱饵 · LB 地图<br />Menu 暂停 · 门前 A / X
+              选择
+            </p>
+          </div>
+        </div>
+        <div class="settings">
+          <label
+            >画质
+            <select id="quality">
+              <option value="high">高</option>
+              <option value="low">低 · 节省电量</option>
+            </select></label
+          ><label
+            ><input id="haptics" type="checkbox" checked /> 手柄震动</label
+          >
+        </div>
+        <button id="resume" class="primary">继续探索 <span>↗</span></button
+        ><button id="restart" class="text-button">重新开始</button>
+      </div>
+    </section>
+    <section id="ending" class="modal" hidden>
+      <div class="modal-card">
+        <span class="tiny" id="endLabel">SWEET ESCAPE</span>
+        <h2 id="endTitle">你逃出来了。</h2>
+        <p id="endCopy"></p>
+        <p id="endStats"></p>
+        <button id="again" class="primary">再去整活 <span>↗</span></button
+        ><button id="backTitle" class="text-button">返回标题</button>
+      </div>
+    </section>
+    <div id="loading">怪邻居们正在穿万圣节服装…</div>
+    <script type="module" src="game.js"></script>
+  </body>
+</html>

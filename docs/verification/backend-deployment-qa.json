@@ -1,0 +1,29 @@
+{
+  "deploy_id": "6ad863524f5c63dd34fa7730",
+  "allPassed": true,
+  "checks": [
+    {
+      "check": "chat function reachable",
+      "http": 200,
+      "configured": true,
+      "passed": true
+    },
+    {
+      "check": "cloud AI reply generated",
+      "http": 200,
+      "passed": true,
+      "reply": "Hello! This is a deployment smoke test."
+    },
+    {
+      "check": "Blobs persisted session",
+      "passed": true
+    },
+    {
+      "check": "experiment function reachable",
+      "http": 200,
+      "storage": "Netlify Blobs",
+      "configured": true,
+      "passed": true
+    }
+  ]
+}

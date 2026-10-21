@@ -1,0 +1,58 @@
+{
+  "source": "Three user-supplied cat images and five existing Imgflip photo-based cat memes, saved unchanged for this requested prototype. Source links record provenance; no ownership or license claim is made.",
+  "images": [
+    {
+      "id": "chaos",
+      "file": "cat-chaos.jpg",
+      "title": "FUNNY CATS MEMES COMPILATION V3",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQRDQVhmU328kVThXCwp5p_MUEtAbypMQFoqPNHrZtPQ&s=10"
+    },
+    {
+      "id": "calico",
+      "file": "cat-calico.jpg",
+      "title": "silly calico cat memes \u2013 LINE stickers",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpg04drw8Vu1sD-jdVkqU_MIEwThPTgrlpJMrX50XOdw&s=10"
+    },
+    {
+      "id": "polite",
+      "file": "cat-polite.jpg",
+      "title": "Polite Cat Meme",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNlK1kUWnKvHL4mlUQm7bE0pjn6hS9qaLb9zQ3JKX-nQ&s=10"
+    },
+    {
+      "id": "dinner",
+      "title": "Woman Yelling At Cat",
+      "file": "cat-dinner.jpg",
+      "url": "https://i.imgflip.com/345v97.jpg",
+      "sourceUrl": "https://imgflip.com/memegenerator/Woman-Yelling-At-Cat"
+    },
+    {
+      "id": "grumpy",
+      "title": "Grumpy Cat",
+      "file": "cat-grumpy.jpg",
+      "url": "https://imgflip.com/s/meme/Grumpy-Cat.jpg",
+      "sourceUrl": "https://imgflip.com/memetemplate/Grumpy-Cat"
+    },
+    {
+      "id": "crying",
+      "title": "Thumbs Up Crying Cat",
+      "file": "cat-crying.png",
+      "url": "https://i.imgflip.com/54o27s.png",
+      "sourceUrl": "https://imgflip.com/memetemplate/310171960/Thumbs-up-crying-cat"
+    },
+    {
+      "id": "confused",
+      "title": "Really Confused Cat",
+      "file": "cat-confused.jpg",
+      "url": "https://i.imgflip.com/572dnx.jpg",
+      "sourceUrl": "https://imgflip.com/memetemplate/314199213/Really-confused-cat"
+    },
+    {
+      "id": "surprised",
+      "title": "Surprised Kitty",
+      "file": "cat-surprised.jpg",
+      "url": "https://i.imgflip.com/4ajnh9.jpg",
+      "sourceUrl": "https://imgflip.com/memetemplate/259577757/surprised-kitty"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c0616"><title>Memory Test Lab · Real context. Real results.</title><link rel="stylesheet" href="style.css"></head>
+<body class="test-page">
+<header class="topbar"><a class="brand" href="./" aria-label="Back to Memory Glitch chat"><span class="brand-icon cat-brand"><img src="./assets/cat-calico.jpg" alt="Real cat meme wearing glasses"></span><span>memory<span class="brand-light">glitch</span><small>THE REAL FORGETTING TEST LAB</small></span></a><nav><a class="back-chat-link" href="./">Back to chat ↗</a><span id="test-connection" class="connection"><i></i>Connecting</span></nav></header>
+<main class="test-workspace">
+<section class="test-intro"><div><p class="eyebrow test-kicker">LAB NOTEBOOK / CONTROLLED RECALL</p><h1>MAKE IT FORGET.<br><span>SHOW THE RECEIPTS.</span></h1><p>Give the same AI 20, 10, then 0 facts. Ask the same 20 questions.<br>See what it recalls, admits it doesn't know, or answers incorrectly.</p></div><figure class="test-intro-cat"><img src="./assets/cat-polite.jpg" alt="An awkwardly polite smiling cat"><figcaption>scientifically unhinged.</figcaption></figure></section>
+<section class="test-controls" aria-label="Run a real recall test"><div><strong>3 live calls. 20 questions each.</strong><p>This test removes fields from the actual model input. No instruction to pretend it forgot. Your normal conversation is untouched.</p></div><div class="test-buttons"><button id="test-run" class="primary-button" disabled>Run real forgetting test ↗</button><button id="test-stop" class="secondary-button" hidden>Stop after this call</button><button id="test-export" class="secondary-button" disabled>Export JSON ↓</button></div></section>
+<div class="test-progress-area"><div><p id="test-progress" role="status">Connecting to Netlify. No test has run yet.</p><span id="test-model">Model: connecting · Temperature: 0</span></div><progress id="test-progress-bar" max="3" value="0" aria-label="Completed test levels"></progress></div>
+<section id="test-results" class="test-grid" aria-label="Measured recall results" aria-live="polite"></section>
+<section class="test-reading"><div><p class="notebook-label">OBSERVATION / THE SIGNAL</p><h2>Read the results honestly.</h2><p><b>Correct</b> means the returned value matches the reference answer. <b>Unknown</b> means the model declined to guess. <b>Mismatch</b> means it returned a different value—review the individual answers.</p></div><div><p class="notebook-label">MARGIN NOTES / THE LIMITS</p><h2>What this proves—and what it doesn't.</h2><p>Each run shows performance on 20 synthetic facts, using the same model and temperature. It is not a measurement of memory capacity, and one run is not a reliable accuracy estimate. Missing recall after withholding facts is expected; it is not automatically hallucination.</p></div></section>
+<div class="test-bottom-links"><a href="./">← Back to normal chat</a><a href="../memory-glitch-lab/">Advanced legacy lab ↗</a></div>
+<details id="test-export-preview" class="test-export-preview" hidden><summary>Copy the exported JSON</summary><textarea id="test-export-json" readonly rows="12" aria-label="Test results JSON"></textarea><button id="test-select-export" class="secondary-button">Select all</button></details>
+</main>
+<footer class="page-footer"><span>MEMORY GLITCH <i>✦</i> CONTROLLED RECALL TEST</span><span>THE MEME IS A JOKE. THE NUMBERS ARE MEASURED.</span><a href="./">Back to chat ↗</a></footer>
+<div id="haunt-effects" aria-hidden="true"></div>
+<script type="module" src="tests.js"></script>
+</body></html>

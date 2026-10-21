@@ -1,0 +1,141 @@
+{
+  "startedAt": "2026-10-21T06:53:46.348809+00:00",
+  "site": "https://extraordinary-croissant-b36d78.netlify.app",
+  "kind": "Live six-turn ordinary chat cadence",
+  "checks": [
+    {
+      "name": "Anonymous visitor connects",
+      "passed": true
+    },
+    {
+      "name": "Turn 1: plain without reaction",
+      "passed": true,
+      "mode": "plain",
+      "reply": "Hello! How can I assist you today?",
+      "reaction": null,
+      "check": "clear",
+      "audit": {
+        "enabled": true,
+        "due": false,
+        "interval": 3,
+        "turn": 1,
+        "generated": false,
+        "captionSource": null,
+        "note": "CHAT REACTION is fictional entertainment on every third successful enabled chat turn, not a detector finding. Confirmed memory alerts remain immediate. The reaction caption is excluded from later chat context and factual checking."
+      }
+    },
+    {
+      "name": "Turn 2: plain without reaction",
+      "passed": true,
+      "mode": "plain",
+      "reply": "That sounds like a fun project! With a budget of 50 AUD for Pumpkin Post, you might want to prioritize key expenses like materials, basic marketing, or simple digital tools. If you share more details about what Pumpkin Post involves, I can help you plan how to best use your budget.",
+      "reaction": null,
+      "check": "clear",
+      "audit": {
+        "enabled": true,
+        "due": false,
+        "interval": 3,
+        "turn": 2,
+        "generated": false,
+        "captionSource": null,
+        "note": "CHAT REACTION is fictional entertainment on every third successful enabled chat turn, not a detector finding. Confirmed memory alerts remain immediate. The reaction caption is excluded from later chat context and factual checking."
+      }
+    },
+    {
+      "name": "Cadence survives reload",
+      "passed": true
+    },
+    {
+      "name": "Turn 3: one chaos reaction",
+      "passed": true,
+      "mode": "chaos",
+      "reply": "How about a \"Spooky Stamp\" feature? Users can add a unique, Halloween-themed digital stamp to their messages or posts, giving Pumpkin Post a quirky, festive flair without breaking the 50 AUD budget.",
+      "reaction": {
+        "catId": "chaos",
+        "caption": "When the pumpkin hires a raccoon with a clipboard to audit ghostly expenses\u2014spooky but efficient!",
+        "label": "CHAT REACTION",
+        "fictional": true,
+        "captionSource": "ai"
+      },
+      "check": "clear",
+      "audit": {
+        "enabled": true,
+        "due": true,
+        "interval": 3,
+        "turn": 3,
+        "generated": true,
+        "captionSource": "ai",
+        "note": "CHAT REACTION is fictional entertainment on every third successful enabled chat turn, not a detector finding. Confirmed memory alerts remain immediate. The reaction caption is excluded from later chat context and factual checking."
+      }
+    },
+    {
+      "name": "Turn 4: plain without reaction",
+      "passed": true,
+      "mode": "plain",
+      "reply": "Your project name is Pumpkin Post, and your budget is 50 AUD.",
+      "reaction": null,
+      "check": "clear",
+      "audit": {
+        "enabled": true,
+        "due": false,
+        "interval": 3,
+        "turn": 1,
+        "generated": false,
+        "captionSource": null,
+        "note": "CHAT REACTION is fictional entertainment on every third successful enabled chat turn, not a detector finding. Confirmed memory alerts remain immediate. The reaction caption is excluded from later chat context and factual checking."
+      }
+    },
+    {
+      "name": "Turn 5: plain without reaction",
+      "passed": true,
+      "mode": "plain",
+      "reply": "A practical next step for Pumpkin Post would be to outline the core functionality and user experience you want to achieve. This will help you prioritize features and allocate your 50 AUD budget effectively. For example, decide how users will send or receive messages, and what platforms (web, mobile) you want to target. Creating a simple wireframe or sketch can clarify your vision before development.",
+      "reaction": null,
+      "check": "clear",
+      "audit": {
+        "enabled": true,
+        "due": false,
+        "interval": 3,
+        "turn": 2,
+        "generated": false,
+        "captionSource": null,
+        "note": "CHAT REACTION is fictional entertainment on every third successful enabled chat turn, not a detector finding. Confirmed memory alerts remain immediate. The reaction caption is excluded from later chat context and factual checking."
+      }
+    },
+    {
+      "name": "Turn 6: one chaos reaction",
+      "passed": true,
+      "mode": "chaos",
+      "reply": "Pumpkin Post will focus on delivering a simple, festive messaging experience with a unique \"Spooky Stamp\" feature to add Halloween charm. The next step is to outline core functionalities and create a basic wireframe to guide development within the 50 AUD budget.",
+      "reaction": {
+        "catId": "grumpy",
+        "caption": "When your brain cell gets promoted to management, even pumpkins start evading taxes with style!",
+        "label": "CHAT REACTION",
+        "fictional": true,
+        "captionSource": "ai"
+      },
+      "check": "clear",
+      "audit": {
+        "enabled": true,
+        "due": true,
+        "interval": 3,
+        "turn": 3,
+        "generated": true,
+        "captionSource": "ai",
+        "note": "CHAT REACTION is fictional entertainment on every third successful enabled chat turn, not a detector finding. Confirmed memory alerts remain immediate. The reaction caption is excluded from later chat context and factual checking."
+      }
+    },
+    {
+      "name": "Project facts retained after chaos",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "completedAt": "2026-10-21T06:54:04.078676+00:00",
+  "browserCheck": {
+    "firstReply": "Hello! How can I assist you today?",
+    "progress": "1/3",
+    "ordinaryMemeCount": 0,
+    "composerAvailable": true
+  }
+}

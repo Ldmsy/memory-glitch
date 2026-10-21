@@ -1,0 +1,80 @@
+{
+  "source": "Five existing Tenor animated reaction memes, downloaded unchanged at the user's request for this prototype. The first is an animated caricature; the other four use video footage. Original captions and credit marks remain intact. Source links record provenance and do not establish a blanket reuse license or ownership. Any additional Memory Glitch caption is fictional parody, not a quote from the pictured person.",
+  "images": [
+    {
+      "id": "trump-1",
+      "title": "Trump Dancing GIF",
+      "file": "trump-meme-1.gif",
+      "alt": "Animated Trump caricature dancing",
+      "url": "https://media1.tenor.com/m/8IZe0sDDSJ4AAAAd/trump-dancing.gif",
+      "sourceUrl": "https://tenor.com/view/trump-dancing-dance-move-gif-16005737",
+      "format": "gif",
+      "width": 640,
+      "height": 640,
+      "frames": 38,
+      "distinctFrames": 37,
+      "durationMs": 3800,
+      "bytes": 649310
+    },
+    {
+      "id": "trump-2",
+      "title": "Donald Trump Wink GIF",
+      "file": "trump-meme-2.gif",
+      "alt": "Donald Trump winking with an existing humorous caption",
+      "url": "https://media1.tenor.com/m/KUOlFc4HcpYAAAAd/donald-trump-wink.gif",
+      "sourceUrl": "https://tenor.com/view/donald-trump-wink-president-usa-gif-2973401692064150166",
+      "format": "gif",
+      "width": 498,
+      "height": 498,
+      "frames": 14,
+      "distinctFrames": 14,
+      "durationMs": 1400,
+      "bytes": 934669
+    },
+    {
+      "id": "trump-3",
+      "title": "I See You I See What You Did There GIF",
+      "file": "trump-meme-3.gif",
+      "alt": "Donald Trump pointing and giving a thumbs up with an existing I see what you did there caption",
+      "url": "https://media1.tenor.com/m/n4825hgj8DIAAAAd/i-see-you-i-see-what-you-did-there.gif",
+      "sourceUrl": "https://tenor.com/view/i-see-you-i-see-what-you-did-there-trump-wink-thumbs-up-gif-11497468735575552050",
+      "format": "gif",
+      "width": 264,
+      "height": 480,
+      "frames": 76,
+      "distinctFrames": 76,
+      "durationMs": 6080,
+      "bytes": 2457672
+    },
+    {
+      "id": "trump-4",
+      "title": "Trump Laughing GIF",
+      "file": "trump-meme-4.gif",
+      "alt": "Donald Trump laughing at a podium",
+      "url": "https://media1.tenor.com/m/Gy43Z6XvwFgAAAAd/trump-laughing.gif",
+      "sourceUrl": "https://tenor.com/pt-BR/view/trump-laughing-gif-6044302",
+      "format": "gif",
+      "width": 480,
+      "height": 270,
+      "frames": 45,
+      "distinctFrames": 43,
+      "durationMs": 2700,
+      "bytes": 1609809
+    },
+    {
+      "id": "trump-5",
+      "title": "Wrong Drumpf GIF",
+      "file": "trump-meme-5.gif",
+      "alt": "Donald Trump making a wrong reaction at a debate microphone",
+      "url": "https://media1.tenor.com/m/8mddYUccA9cAAAAd/wrong-drumpf.gif",
+      "sourceUrl": "https://tenor.com/view/wrong-drumpf-trump-stupid-gif-6220235",
+      "format": "gif",
+      "width": 498,
+      "height": 450,
+      "frames": 33,
+      "distinctFrames": 32,
+      "durationMs": 1650,
+      "bytes": 1004427
+    }
+  ]
+}
