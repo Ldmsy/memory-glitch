@@ -1,0 +1,59 @@
+{
+  "game": "Nailoong — Midnight Munchies",
+  "date": "2026-10-21",
+  "timezone": "Australia/Sydney",
+  "automated_tests": {
+    "passed": 62,
+    "failed": 0,
+    "new_game_rule_tests": 5
+  },
+  "browser_completed_run": {
+    "result": "won",
+    "candies": 15,
+    "houses": 3,
+    "hearts_remaining": 1,
+    "displayed_time_remaining": "1:17",
+    "score": 2264
+  },
+  "browser_checks": [
+    "Original GLB and Halloween accessories visible",
+    "Belly laugh activation and cooldown",
+    "Click navigation to all three houses",
+    "Gate unlock and successful escape",
+    "Restart resets counters",
+    "Pause holds countdown",
+    "390x844 mobile intro and touch layout",
+    "No warning/error messages in QA browser console"
+  ],
+  "limitations": [
+    "Physical gamepad not tested",
+    "Responsive browser preview is not a physical phone performance test"
+  ],
+  "deploy_id": "6ad86f0a0a4694bf287aa870",
+  "production_checks": [
+    {
+      "path": "nailoong-night/index.html",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "path": "nailoong-night/game.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "path": "nailoong-night/character.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "path": "assets/nailoong.glb",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "path": "memory-glitch/",
+      "status": 200
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "site_id": "e19ab4f2-6c65-464e-a12f-c0584d8dc44a",
   "site_name": "extraordinary-croissant-b36d78",
-  "deploy_id": "6ad863524f5c63dd34fa7730",
+  "deploy_id": "6ad86f0a0a4694bf287aa870",
   "url": "https://extraordinary-croissant-b36d78.netlify.app",
   "memory_glitch_url": "https://extraordinary-croissant-b36d78.netlify.app/memory-glitch/",
   "version": 3,
@@ -9,5 +9,6 @@
   "ui": "Burnt orange Halloween notebook; two plain replies then one Chaos reply; 8 cat images and 5 animated Trump GIFs",
   "tests_url": "https://extraordinary-croissant-b36d78.netlify.app/memory-glitch/tests",
   "visibility": "public",
-  "public_access_verified": "Anonymous GET returned HTTP 200 for chat and tests without a login redirect, 2026-10-21"
+  "public_access_verified": "Anonymous GET returned HTTP 200 for chat and tests without a login redirect, 2026-10-21",
+  "nailoong_night_url": "https://extraordinary-croissant-b36d78.netlify.app/nailoong-night/"
 }

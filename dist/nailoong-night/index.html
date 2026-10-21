@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#112620">
+  <meta name="description" content="One very hungry dragon. One haunted neighborhood. A Halloween candy run starring Nailoong.">
+  <title>Nailoong — Midnight Munchies</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas id="game-canvas" aria-label="The haunted neighborhood game world"></canvas>
+  <div class="scene-vignette" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <div class="wordmark" aria-label="Nailoong Midnight Munchies">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none"><path d="M9 12C9 5 25 5 25 12L28 24C29 30 5 30 6 24L9 12Z" fill="currentColor"/><circle cx="13" cy="14" r="2" fill="#153027"/><circle cx="21" cy="14" r="2" fill="#153027"/><path d="M12 21Q17 25 22 21" stroke="#153027" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span>NAILOONG<span class="wordmark-dot" aria-hidden="true">✳</span></span>
+    </div>
+    <span class="edition"><span class="edition-dot"></span> A HALLOWEEN NIGHT OUT</span>
+    <span class="header-note">NO THOUGHTS.<br>JUST CANDY.</span>
+  </header>
+
+  <main>
+    <section id="intro" aria-labelledby="game-title">
+      <div class="intro-copy">
+        <p class="chapter"><span>CHAPTER 01</span><i></i> THE NEIGHBORHOOD AFTER DARK</p>
+        <h1 id="game-title">Midnight<br><em>Munchies.</em><span class="title-spark" aria-hidden="true">✳</span></h1>
+        <p class="intro-description">One very hungry dragon.<br>A neighborhood with <span>questionable neighbors.</span></p>
+        <p class="mission">Grab the candy. Knock on three doors.<br>When the ghosts get close? <strong>Laugh in their faces.</strong><span class="click-instruction">Click to move. Tap a house to knock. WASD / arrows work too.</span></p>
+        <div class="launch-row">
+          <button id="play" class="button button-primary" type="button" disabled><span>Let's get candy</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+          <span class="run-duration">A 2-MINUTE<br>MIDNIGHT MISADVENTURE</span>
+        </div>
+        <p id="load-status" class="load-status" role="status">Waking up our very hungry dragon…</p>
+        <div class="mission-stamps" aria-label="Game objectives">
+          <div><strong>12</strong><span>CANDIES<br>TO COLLECT</span></div>
+          <div><strong>03</strong><span>DOORS<br>TO VISIT</span></div>
+          <div><strong>♥</strong><span>THREE LIVES.<br>ONE BIG BELLY.</span></div>
+        </div>
+      </div>
+      <div class="character-note" aria-hidden="true"><span class="note-arrow">↙</span><span>friendly face.<br><em>bottomless stomach.</em></span></div>
+      <div class="night-ticket" aria-hidden="true"><span>ADMIT ONE</span><b>31<br><small>OCT</small></b><span>AFTER DARK</span></div>
+      <div class="intro-bottom">
+        <p><span class="small-star">✳</span> NOT ALL MONSTERS ARE HERE TO SCARE YOU.</p>
+        <div class="intro-controls" aria-label="Keyboard controls"><span><kbd>CLICK</kbd> or <kbd>WASD</kbd> move</span><span><kbd>SHIFT</kbd> dash</span><span><kbd>SPACE</kbd> belly laugh</span><span><kbd>E</kbd> trick or treat</span></div>
+        <span class="touch-intro">TOUCH CONTROLS APPEAR WHEN YOU PLAY</span>
+      </div>
+    </section>
+
+    <section id="hud" class="hud" aria-label="Game status" hidden>
+      <div class="hud-left">
+        <div class="hud-emblem" aria-hidden="true">N<span>✳</span></div>
+        <div class="hud-stat time-stat"><span class="hud-label">BEFORE MIDNIGHT</span><strong id="timer">2:00</strong></div>
+        <div class="hud-stat"><span class="hud-label">CANDY HAUL</span><strong id="candy-count">0 / 12</strong></div>
+        <div class="hud-stat"><span class="hud-label">DOORS VISITED</span><strong id="house-count">0 / 3</strong></div>
+        <div class="hud-stat hearts-stat"><span class="hud-label">STILL KICKING</span><strong id="hearts" aria-label="Lives remaining">♥ ♥ ♥</strong></div>
+      </div>
+      <div class="hud-actions"><button id="camera-button" class="hud-button camera-button" type="button" aria-label="Camera overview" title="Switch to overview camera (C)">OVERVIEW</button><button id="sound-button" class="hud-button" type="button" aria-label="Toggle game sound" title="Toggle sound">Sound off</button><button id="pause-button" class="hud-button pause-button" type="button" aria-label="Pause game" title="Pause game">Ⅱ</button></div>
+      <div class="laugh-status"><div class="laugh-top"><span class="laugh-icon" aria-hidden="true">☺</span><span id="laugh-label">Belly laugh ready</span><kbd>SPACE</kbd></div><div class="laugh-track"><div id="laugh-fill"></div></div></div>
+      <nav class="station-navigation" aria-label="Navigate to a trick-or-treat stop"><button type="button" data-station="candy"><span>01</span> Candy</button><button type="button" data-station="potion"><span>02</span> Potion</button><button type="button" data-station="costume"><span>03</span> Costume</button><button id="go-exit" type="button" disabled>Go home <span aria-hidden="true">↗</span></button></nav>
+      <div class="game-hint"><kbd>CLICK</kbd> or <kbd>WASD</kbd> move <span>·</span> <kbd>SHIFT</kbd> dash <span>·</span> <kbd>E</kbd> trick or treat</div>
+    </section>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="prompt" class="interaction-prompt" hidden><span class="prompt-mark" aria-hidden="true">✳</span><p id="prompt-text">A suspiciously generous neighbor.</p><button id="interact" type="button"><kbd>E</kbd><span>Trick or treat</span></button></div>
+
+    <section id="pause-panel" class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
+      <div class="result-card pause-card"><p class="panel-eyebrow">THE GHOSTS CAN WAIT.</p><div class="panel-doodle" aria-hidden="true">Ⅱ</div><h2 id="pause-title">Snack break.</h2><p>Your candy isn't going anywhere.<br>Probably.</p><div class="panel-actions"><button id="resume" class="button button-primary" type="button">Back to the haunt <span aria-hidden="true">↗</span></button><button id="restart" class="button button-secondary" type="button">Start a fresh run</button></div><p class="panel-footnote">CLICK TO MOVE · DASH · LAUGH · KNOCK</p></div>
+    </section>
+
+    <section id="end-panel" class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="end-title" hidden>
+      <div class="result-card"><p id="end-eyebrow" class="panel-eyebrow">THE MIDNIGHT REPORT</p><div class="panel-doodle end-doodle" aria-hidden="true">✳</div><h2 id="end-title">What a night.</h2><p id="end-copy">The neighborhood will never be the same.</p><div id="end-stats" class="end-stats"></div><div class="panel-actions"><button id="play-again" class="button button-primary" type="button">One more bite <span aria-hidden="true">↗</span></button></div><p class="panel-footnote">SAME DRAGON. EVEN WORSE DECISIONS.</p></div>
+    </section>
+
+    <div id="mobile-controls" class="mobile-controls" aria-label="Touch game controls">
+      <div class="dpad"><button type="button" data-move="up" aria-label="Move forward">↑</button><button type="button" data-move="left" aria-label="Move left">←</button><span class="dpad-center" aria-hidden="true">✳</span><button type="button" data-move="right" aria-label="Move right">→</button><button type="button" data-move="down" aria-label="Move backward">↓</button></div>
+      <div class="touch-actions"><button id="touch-interact" type="button" aria-label="Trick or treat">KNOCK<span>✳</span></button><button id="touch-dash" type="button" aria-label="Dash">DASH<span>↗</span></button><button id="touch-laugh" type="button" aria-label="Belly laugh">HA!<small>BELLY LAUGH</small></button></div>
+    </div>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>

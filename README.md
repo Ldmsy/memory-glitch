@@ -42,7 +42,7 @@ The experiment removes fields **in code before the request is sent**. It does no
 
 ## Verification
 
-The repository includes **57 automated tests** covering context selection, quote validation, updated facts, conservative review, reactions, cadence, and experiment isolation, alongside preserved game tests.
+The repository includes **62 automated tests** covering context selection, quote validation, updated facts, conservative review, reactions, cadence, and experiment isolation, alongside preserved game tests.
 
 ```sh
 node --test tests/*.test.mjs
@@ -92,3 +92,11 @@ For deployment, import the repository into Netlify. [`netlify.toml`](netlify.tom
 The main application is in [`dist/memory-glitch/`](dist/memory-glitch/). The earlier **Trick Town** game remains at `/`, and its documentation is preserved in [`docs/legacy-trick-town.md`](docs/legacy-trick-town.md). The advanced legacy memory interface remains at `/memory-glitch-lab/`.
 
 The UI uses eight cat images and five animated Trump reaction GIFs. Provenance is recorded in [`cat-sources.json`](dist/memory-glitch/assets/cat-sources.json) and [`trump-sources.json`](dist/memory-glitch/assets/trump-sources.json). The witch portrait is labelled AI-generated parody. Additional meme captions are fictional comedy, not quotations from the pictured person. Third-party images, GIFs, and bundled libraries retain their respective rights; this repository does not claim ownership or grant a blanket license over them.
+
+## Nailoong game remake
+
+The original Nailoong model now stars in **Midnight Munchies**, a separate playable Halloween game. Visit three houses, collect 12 candies, laugh ghosts into giving up sweets, and escape before midnight. It has follow/overview cameras, keyboard and click navigation, phone controls, and safe doorsteps.
+
+[Play Midnight Munchies](https://extraordinary-croissant-b36d78.netlify.app/nailoong-night/) · [Game source and controls](dist/nailoong-night/README.md) · [Verification record](docs/verification/nailoong-night-qa.json)
+
+The game reuses the existing GLB with its original idle/laugh clips and new Halloween accessories. Its score is stored locally; it does not call the Memory Glitch AI backend.
